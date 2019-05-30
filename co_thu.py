@@ -32,7 +32,7 @@ class Player:
                 if playerMaxScore == move[1]:
                     r = randint(0, 100)
                     if r > 70:
-                        print("HAHA SKIP " + str(move[0][0]) + str(move[0][1]))
+                        # print("HAHA SKIP " + str(move[0][0]) + str(move[0][1]))
                         bestMove = move
                         playerMaxScore = move[1]
                         continue

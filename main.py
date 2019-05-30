@@ -59,7 +59,7 @@ def doit(move, board):
             if x.position == nextPos:
                 theOtherPiece = x
                 redList.remove(theOtherPiece)
-    print("Remove")
+    # print("Remove")
     print(theOtherPiece)
 
     # Move the Piece to next Pos
@@ -96,7 +96,6 @@ def play(student_a, student_b, start_state=Initial_Board):
     state.print()
 
     while True:
-        # time.sleep(1)
         print("It is ", curr_player, "'s turn")
 
         start = time.time()
