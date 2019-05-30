@@ -63,7 +63,7 @@ class Player:
                 if playerMaxScore == move[1]:
                     r = randint(0, 100)
                     if r > 70:
-                        print("HAHA SKIP " + str(move[0][0]) + str(move[0][1]))
+                        # print("HAHA SKIP " + str(move[0][0]) + str(move[0][1]))
                         bestMove = move
                         playerMaxScore = move[1]
                         continue
@@ -133,7 +133,7 @@ def possibleNextMoves(state, side):
         nextScore = currentScore
         nextPos = (piece.position[0] + 1, piece.position[1])
         # check special moves
-        if nextPos in waterPosition:
+        if nextPos in waterPosition:    
             if pieceType == SuTu or pieceType == Ho:
                 # jump up 4
                 nextPos = (piece.position[0] + 4, piece.position[1])
@@ -272,13 +272,16 @@ def checkNextPos(nextPos, list_pieces, piece, pieceType):
         if nextPos == otherPiece.position:
             # check if capturable
             if piece.position in waterPosition: # check if piece in water
+                if otherPiece.position in waterPosition and pieceScore.get(pieceType) >= pieceScore.get(otherPiece.type):# check if other piece in water, still can capture
+                    captureScore = pieceScore.get(otherPiece.type)
+                    break
                 return None
             elif otherPiece.position in waterPosition:# check if other piece in water
                 return None
             elif otherPiece.position in trapPosition: # check if other piece in trap
                 captureScore = pieceScore.get(otherPiece.type)
                 break
-            elif pieceType == Chuot and otherPiece.type == Voi: # Chout > Voi
+            elif pieceType == Chuot and otherPiece.type == Voi: # Chuot > Voi
                 captureScore = pieceScore.get(otherPiece.type)
                 break
             elif pieceScore.get(pieceType) >= pieceScore.get(otherPiece.type):
